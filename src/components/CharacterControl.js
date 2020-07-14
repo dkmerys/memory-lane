@@ -8,18 +8,21 @@ import CharacterList from './CharacterList';
 
 function CharacterControl(){
   let currentlyVisibleState = null
-  const [visibleForm, setForm] = useState(true);
+  let buttonText = null
+  const [visibleForm, setForm] = useState(false);
   
   if (visibleForm === true){
     currentlyVisibleState = <NewCharacterForm />
+    buttonText = "View Characters"
   }else{
     currentlyVisibleState = <CharacterList />
+    buttonText = "Add Character"
   }
   
   return(
     <React.Fragment>
       {currentlyVisibleState}
-      {/* <button onClick={setForm}>{buttonText}</button> */}
+      <button onClick={ () => setForm(!visibleForm)}>{buttonText}</button>
     </React.Fragment>
   )
 }

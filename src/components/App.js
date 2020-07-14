@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import CharacterControl from './CharacterControl'
 import Header from './Header';
 import Signin from './Signin'
 
@@ -12,7 +13,7 @@ function App() {
           <Signin />
         </Route>
         <Route path='/'>
-          {/* <TicketControl /> */}
+          <CharacterControl />
         </Route>
       </Switch>
     </Router>

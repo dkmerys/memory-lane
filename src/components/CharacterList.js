@@ -4,17 +4,18 @@ import { useSelector } from 'react-redux';
 import { useFirestoreConnect, isLoaded, isEmpty } from 'react-redux-firebase';
 import Character from './Character'
 
-function CharacterList(){
+function CharacterList(props){
   useFirestoreConnect([
     {collection: 'characters' }
   ]);
   const characters = useSelector(state => state.firestore.ordered.characters);
   if (isLoaded(characters)){
+    const {setSelectedCharacter, selectedCharacterId} = props
     return(
       <React.Fragment>
         {characters.map((character) => {
           return <Character
-          // whenCharacterClicked = {props.onCharacterSelection}
+          whenCharacterClicked = {setSelectedCharacter}
           characterName={character.characterName}
           id={character.id}
           key={character.id}/>

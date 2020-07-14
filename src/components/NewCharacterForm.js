@@ -4,12 +4,12 @@ import ReusableForm from './ReusableForm';
 import { useFirestore } from 'react-redux-firebase';
 
 function NewCharacterForm(props){
-
+  const {setForm, visibleForm} = props
   const firestore = useFirestore();
 
   function addCharacterToFirestore(event) {
     event.preventDefault();
-    // props.onNewCharacterCreation();
+    setForm(!visibleForm);
     return firestore.collection('characters').add(
       {
         characterName: event.target.characterName.value,

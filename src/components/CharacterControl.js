@@ -12,9 +12,10 @@ function CharacterControl(){
   const [visibleForm, setForm] = useState(false);
   
   if (visibleForm === true){
-    currentlyVisibleState = <NewCharacterForm />
+    currentlyVisibleState = <NewCharacterForm 
+    setForm={setForm} visibleForm={visibleForm}/>
     buttonText = "View Characters"
-  }else{
+  } else {
     currentlyVisibleState = <CharacterList />
     buttonText = "Add Character"
   }

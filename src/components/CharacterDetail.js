@@ -5,7 +5,7 @@ import { withFirestore, isLoaded, useFirestore, useFirestoreConnect} from 'react
 import 'firebase/firestore';
 
 function CharacterDetail(props) {
-  const { selectedCharacter } = props
+  const { selectedCharacter, editing, setEditing} = props
   console.log(selectedCharacter)
 
   useFirestoreConnect([
@@ -17,11 +17,12 @@ function CharacterDetail(props) {
 
   const character = useSelector(
     ({ firestore: { data } }) => data.characters && data.characters[selectedCharacter]
-  )
-  return (
+  ) 
+  return ( 
     <React.Fragment>
       <h1>Witness Me!</h1>
       <h1>Character Name: {character.characterName}</h1>
+      <button onClick={ () => setEditing(!editing)}>Edit Character</button>
     </React.Fragment>
   );
 }

@@ -35,6 +35,7 @@ function CharacterControl(){
     buttonText = "Return to Character List"
   } else if (selectedCharacterId !== null){
     currentlyVisibleState = <CharacterDetail 
+                            setSelectedCharacter = {setSelectedCharacter}
                             selectedCharacter={selectedCharacterId}
                             editing = {editing}
                             setEditing = {setEditing} />

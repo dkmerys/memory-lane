@@ -1,26 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withFirestore, isLoaded, useFirestore } from 'react-redux-firebase';
+import { useSelector } from 'react-redux';
+import { withFirestore, isLoaded, useFirestore, useFirestoreConnect} from 'react-redux-firebase';
 import 'firebase/firestore';
 
 function CharacterDetail(props) {
   const { selectedCharacter } = props
   console.log(selectedCharacter)
 
-  const firestore = useFirestore();
-
-  const firestoreCharacter = firestore.get({ collection: 'characters', doc: selectedCharacter }).then((character) => {
-    const firestoreCharacterInternal = {
-      name: character.get('characterName'),
-      id: character.id
+  useFirestoreConnect([
+    { 
+      collection: 'characters',
+      doc: selectedCharacter
     }
-    return firestoreCharacterInternal
-  })
+  ]);
 
+  const character = useSelector(
+    ({ firestore: { data } }) => data.characters && data.characters[selectedCharacter]
+  )
   return (
     <React.Fragment>
       <h1>Witness Me!</h1>
-      <p>{firestoreCharacter.name}</p>
+      <h1>Character Name: {character.characterName}</h1>
     </React.Fragment>
   );
 }

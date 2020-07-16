@@ -17,6 +17,15 @@ function CharacterList(props){
           return <Character
           whenCharacterClicked = {setSelectedCharacter}
           characterName={character.characterName}
+          characterRace={character.characterRace}
+          characterClass={character.characterClass}
+          characterLvl={character.characterLvl}
+          characterStr={character.characterStr}
+          characterDex={character.characterDex}
+          characterCon={character.characterCon}
+          characterInt={character.characterInt}
+          characterWis={character.characterWis}
+          characterCha={character.characterCha}
           id={character.id}
           key={character.id}/>
         })}

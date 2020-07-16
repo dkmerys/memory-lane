@@ -9,7 +9,8 @@ import CharacterList from './CharacterList';
 import CharacterDetail from './CharacterDetail'
 import EditCharacterForm from './EditCharacterForm';
 import firebase from '../firebase';
-
+import { Button } from '../styled/SharedStyles';
+ 
 function CharacterControl(){
   let currentlyVisibleState = null
   let buttonText = null
@@ -30,7 +31,7 @@ function CharacterControl(){
 
   const user = firebase.auth().currentUser;
 
-  if (user) {
+  // if (user) {
     if (editing === true){
       currentlyVisibleState = <EditCharacterForm
                               editing={editing}
@@ -62,17 +63,17 @@ function CharacterControl(){
     return(
       <React.Fragment>
         {currentlyVisibleState}
-        <button onClick={ () => returnToList() }>{buttonText}</button>
+        <Button onClick={ () => returnToList() }>{buttonText}</Button>
       </React.Fragment>
     )
-  } else {
-    return(
-      <div>
-        <p>Go fuck yourself</p>
-      </div>
+  // } else {
+  //   return(
+  //     <div>
+  //       <p>Go fuck yourself</p>
+  //     </div>
 
-    )
-  }
+  //   )
+  // }
 
   
 }

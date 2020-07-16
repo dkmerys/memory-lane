@@ -1,18 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import { Banner, Button } from '../styled/SharedStyles'
 
 function Header () {
   return(
     <React.Fragment>
-      <h1>Characters</h1>
-      <ul>
-        <li>
-          <Link to='/'>Home</Link>
-        </li>
-        <li>
-          <Link to='/signin'>Sign In</Link>
-        </li>
-      </ul>
+      <Banner>Characters</Banner>
+      <Link to='/'><Button>Home</Button></Link>
+      <Link to='/signin'><Button>Sign In</Button></Link>
     </React.Fragment>
   );
 }
